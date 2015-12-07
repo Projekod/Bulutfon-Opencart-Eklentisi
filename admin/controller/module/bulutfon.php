@@ -181,37 +181,37 @@ class ControllerModuleBulutfon extends Controller{
 
 
         $data["cdrs"] = [];
-        $cdrs = $provider->getCdrs($token)->getArrayCopy();
-        if(isset($cdrs["cdrs"])){
-            $cdrs = $cdrs["cdrs"];
-            foreach($cdrs as $cdr){
-                /** @var $cdr \Bulutfon\OAuth2\Client\Entity\Cdr */;
-                $cdrData = $cdr->getArrayCopy();
-
-                $cdrData["direction_str"] = "";
-                $cdrData["bf_calltype_str"] = "";
-
-                $cdrData["caller_str"] = $this->formatPhoneNumber($cdrData["caller"]);
-                $cdrData["callee_str"] = $this->formatPhoneNumber($cdrData["callee"]);
-
-                if($callerStr= $this->getNumberName($cdrData["caller"])){
-                    $cdrData["caller_str"] = ($callerStr);
-                }
-
-                if($calleeStr= $this->getNumberName($cdrData["callee"])){
-                    $cdrData["callee_str"] = ($calleeStr);
-                }
-
-                if(isset($referans["direction"][$cdrData["direction"]])){
-                    $cdrData["direction_str"] = $referans["direction"][$cdrData["direction"]];
-                }
-                if(isset($referans["bf_calltype"][$cdrData["bf_calltype"]])){
-                    $cdrData["bf_calltype_str"] = $referans["bf_calltype"][$cdrData["bf_calltype"]];
-                }
-
-                $data["cdrs"][] = $cdrData;
-            }
-        }
+//        $cdrs = $provider->getCdrs($token)->getArrayCopy();
+//        if(isset($cdrs["cdrs"])){
+//            $cdrs = $cdrs["cdrs"];
+//            foreach($cdrs as $cdr){
+//                /** @var $cdr \Bulutfon\OAuth2\Client\Entity\Cdr */;
+//                $cdrData = $cdr->getArrayCopy();
+//
+//                $cdrData["direction_str"] = "";
+//                $cdrData["bf_calltype_str"] = "";
+//
+//                $cdrData["caller_str"] = $this->formatPhoneNumber($cdrData["caller"]);
+//                $cdrData["callee_str"] = $this->formatPhoneNumber($cdrData["callee"]);
+//
+//                if($callerStr= $this->getNumberName($cdrData["caller"])){
+//                    $cdrData["caller_str"] = ($callerStr);
+//                }
+//
+//                if($calleeStr= $this->getNumberName($cdrData["callee"])){
+//                    $cdrData["callee_str"] = ($calleeStr);
+//                }
+//
+//                if(isset($referans["direction"][$cdrData["direction"]])){
+//                    $cdrData["direction_str"] = $referans["direction"][$cdrData["direction"]];
+//                }
+//                if(isset($referans["bf_calltype"][$cdrData["bf_calltype"]])){
+//                    $cdrData["bf_calltype_str"] = $referans["bf_calltype"][$cdrData["bf_calltype"]];
+//                }
+//
+//                $data["cdrs"][] = $cdrData;
+//            }
+//        }
         $this->response->setOutput($this->load->view('module/bulutfon.tpl', $data));
 
     }

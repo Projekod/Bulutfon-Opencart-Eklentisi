@@ -265,7 +265,13 @@
                                 <th title="<?php echo $all_sms_template[$queue['template_id']-1]['content']; ?>">
                                     <a href="#template_edit" data-toggle="tab"><?php echo $queue['template_id']?></a>
                                 </th>
-                                <th><?php echo $queue['status']?></th>
+                                <th>
+                                    <?php if($queue['status']==1): ?>
+                                        <label class="label label-primary">Bekliyor</label>
+                                    <?php elseif($queue['status']==2): ?>
+                                        <label class="label label-primary">Gönderildi</label>
+                                    <?php endif; ?>
+                                </th>
                             </tr>
                             <?php endforeach;?>
                             </tbody>

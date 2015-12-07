@@ -5,6 +5,16 @@ class ControllerModuleBulutfon extends Controller {
     public function index() {
 
         $action = $this->request->get["action"];
+        $token = $this->request->get["token"];
+
+        $securityKey = $this->config->get("bulutfon_secureKey");
+
+        if($securityKey != $token){
+            echo  json_encode(array(
+                'message'=>'no match secure key'
+            ));
+            die();
+        }
 
         if(method_exists($this,"action_$action")){
             $metod = "action_$action";
@@ -18,9 +28,41 @@ class ControllerModuleBulutfon extends Controller {
     }
 
     private function action_cron(){
-        include (realpath(DIR_APPLICATION.'../bulutfonlibs')).'/autoload.php';
+        $sysDir = realpath(DIR_APPLICATION."/../system/bulutfon/");
+        include($sysDir."/autoload.php");
 
 
+        $masterToken = $this->config->get("bulutfon_masterKey");
+        $smsBaslik = $this->config->get("bulutfon_sms_baslik");
+        $provider = new \Bulutfon\OAuth2\Client\Provider\Bulutfon(array(
+            'verifySSL'=>false
+        ));
+
+        $ac = new \League\OAuth2\Client\Token\AccessToken(array('access_token'=>$masterToken));
+
+        $cronCount = $this->config->get("ayar_sms_cronCount");
+        if(!$cronCount){$cronCount = 10;}
+
+        $smsQs = $this->db->query("SELECT * FROM ". DB_PREFIX."sms_queue sq left join ".DB_PREFIX."sms_template st ON sq.template_id = st.id Where sq.status=1 order by st.id asc limit 0,10 ")->rows;
+
+
+        foreach($smsQs as $sms){
+            $arguments = json_decode($sms["arguments"],true);
+            $content = $sms["content"];
+            foreach($arguments as $arKey => $arValue){
+                $content = str_replace("{$arKey}",$arValue,$content);
+            }
+            $m = array(
+                'title'=>$smsBaslik,
+                'receivers'=>'9'.$sms["phone_number"],
+                'content'=>$content
+            );
+
+            $sonuc =(array) $provider->sendMessage($ac,$m);
+            if(isset($sonuc["message"]) && $sonuc["message"]=="Messages created successfully"){
+                $this->db->query("update ". DB_PREFIX."sms_queue set sms_content='$content',status=2");
+            }
+        }
         die();
     }
 
