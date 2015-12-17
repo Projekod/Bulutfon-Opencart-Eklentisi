@@ -144,6 +144,7 @@ class ControllerModuleBulutfon extends Controller{
         $data["ayar_notify_onNewUser"] = $this->config->get("bulutfon_notify_onNewUser");
         $data["ayar_sms_cronCount"] = $this->config->get("bulutfon_sms_cronCount");
         $data["ayar_sms_baslik"] = $this->config->get("bulutfon_sms_baslik");
+        $data["ayar_sms_numaralar"] = $this->config->get("bulutfon_sms_numaralar");
         $data["ayar_sms_cronCount"] = !empty($data["ayar_sms_cronCount"]) ? $data["ayar_sms_cronCount"] : 10;
 
 
@@ -182,9 +183,12 @@ class ControllerModuleBulutfon extends Controller{
             $referans["bf_calltype"]["voice"] = "<i class='fa fa-phone'></i> Sesli";
             $referans["bf_calltype"]["fax"] = "<i class='fa fa-print'></i> Fax";
 
+            $cdrConfig = array();
+            if($data["ayar_sms_numaralar"]){
+                $cdrConfig = array('callee' => $data["ayar_sms_numaralar"]);
+            }
 
-
-            $cdrs = $provider->getCdrs($token)->getArrayCopy();
+            $cdrs = $provider->getCdrs($token, $cdrConfig )->getArrayCopy();
             if(isset($cdrs["cdrs"])){
                 $cdrs = $cdrs["cdrs"];
                 foreach($cdrs as $cdr){

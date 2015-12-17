@@ -117,6 +117,13 @@
                                         <input type="text" name="bulutfon_sms_baslik" value="<?=$ayar_sms_baslik;?>" placeholder="Sms Başlığı"  class="form-control" />
                                     </div>
                                 </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="input-name">Santral Numaraları</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="bulutfon_sms_numaralar" value="<?=$ayar_sms_numaralar;?>" placeholder="90XXXXXXXXXX,90XXXXXXXXXX"  class="form-control" />
+                                    </div>
+                                </div>
                             </fieldset>
                             <br/>
                             <br/>
