@@ -69,65 +69,73 @@ class ControllerModuleBulutfon extends Controller {
 
     public function on_order_add($orderId) {
 
-        $templateId = 1;
+        if($this->config->get("bulutfon_notify_onOrderComplete")) {
 
-        $order = $this->db->query("SELECT * FROM ". DB_PREFIX."order WHERE order_id=".$orderId)->rows;
-        $orderProduct = $this->db->query("SELECT * FROM ". DB_PREFIX."order_product WHERE order_id=".$orderId)->rows;
+            $templateId = 1;
 
-        $arguments = [
-            'ad' => $order[0]['firstname'],
-            'soyad' => $order[0]['lastname'],
-            'fiyat' => $order[0]['total'],
-            'siparisNumarasi' => $orderId
-        ];
+            $order = $this->db->query("SELECT * FROM " . DB_PREFIX . "order WHERE order_id=" . $orderId)->rows;
+            $orderProduct = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id=" . $orderId)->rows;
 
-        $jsonArguments = json_encode($arguments);
+            $arguments = [
+                'ad' => $order[0]['firstname'],
+                'soyad' => $order[0]['lastname'],
+                'fiyat' => $order[0]['total'],
+                'siparisNumarasi' => $orderId
+            ];
 
-        $this->addQueue($order[0]['telephone'], $templateId, $jsonArguments);
+            $jsonArguments = json_encode($arguments);
+
+            $this->addQueue($order[0]['telephone'], $templateId, $jsonArguments);
+        }
 
     }
 
     public function on_order_history_add($orderId){
 
-        $templateId = 2;
+        if($this->config->get("bulutfon_notify_onOrderStatusChange")) {
 
-        $order = $this->db->query("SELECT * FROM ". DB_PREFIX."order WHERE order_id=".$orderId)->rows;
-        $orderStatus = $this->db->query("SELECT * FROM ". DB_PREFIX."order_status WHERE order_status_id=".$order[0]['order_status_id'])->rows;
+            $templateId = 2;
 
-        $arguments = [
-            'siparisNumarasi' => $orderId,
-            'siparisDurumu' => $orderStatus[0]['name']
-        ];
+            $order = $this->db->query("SELECT * FROM " . DB_PREFIX . "order WHERE order_id=" . $orderId)->rows;
+            $orderStatus = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id=" . $order[0]['order_status_id'])->rows;
 
-        $jsonArguments = json_encode($arguments);
+            $arguments = [
+                'siparisNumarasi' => $orderId,
+                'siparisDurumu' => $orderStatus[0]['name']
+            ];
 
-        $this->addQueue($order[0]['telephone'], $templateId, $jsonArguments);
+            $jsonArguments = json_encode($arguments);
+
+            $this->addQueue($order[0]['telephone'], $templateId, $jsonArguments);
+        }
 
     }
 
     public function on_customer_add($customerId){
 
-        $templateId = 3;
+        if($this->config->get("bulutfon_notify_onNewUser")) {
 
-        $customer = $this->db->query("SELECT * FROM ". DB_PREFIX."customer WHERE customer_id=".$customerId)->rows;
+            $templateId = 3;
 
-        $arguments = [
-            'ad' => $customer[0]['firstname'],
-            'soyad' => $customer[0]['lastname'],
-        ];
+            $customer = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE customer_id=" . $customerId)->rows;
 
-        $jsonArguments = json_encode($arguments);
+            $arguments = [
+                'ad' => $customer[0]['firstname'],
+                'soyad' => $customer[0]['lastname'],
+            ];
 
-        $this->addQueue($customer[0]['telephone'], $templateId, $jsonArguments);
+            $jsonArguments = json_encode($arguments);
+
+            $this->addQueue($customer[0]['telephone'], $templateId, $jsonArguments);
+        }
     }
 
     public function addQueue($phoneNumber, $templateId, $arguments){
 
-        $this->db->query("INSERT INTO ".DB_PREFIX."sms_queue (date_added, status, arguments, template_id, phone_number) VALUES ( '".date('Y-m-d H:i:s')."', '1','".$arguments."','".$templateId."','".$phoneNumber."')");
-
+        $rows = $this->db->query("SELECT * FROM ". DB_PREFIX."sms_queue WHERE date_added='".date('Y-m-d H:i:s')."' and template_id='".$templateId."' and phone_number='".$phoneNumber."'")->rows;
+        if(!$rows){
+            $this->db->query("INSERT INTO ".DB_PREFIX."sms_queue (date_added, status, arguments, template_id, phone_number) VALUES ( '".date('Y-m-d H:i:s')."', '1','".$arguments."','".$templateId."','".$phoneNumber."')");
+        }
     }
-
-
-
 
 }
