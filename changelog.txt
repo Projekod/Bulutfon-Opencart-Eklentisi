@@ -1,0 +1,27 @@
+## 0.0.4 - 2016-01-18
+### Added
+-Sms kuyruðundaki sms leri silme özelliðinin eklenmesi
+-Default sms lerin gönderim kontrolleri deðiþtirildi
+### Change
+-Ayný sms in ayný anda kuyruða birden fazla eklenmesinin önüne geçildi
+
+
+## 0.0.3 - 2015-12-17
+### Added
+-Arama geçmiþi bölümünün yenilenmesi
+-Arama geçmiþi bölümüne santral numarasý filtreleme özelliðinin eklenmesi
+
+
+## 0.0.2 - 2015-12-07
+### Added
+-Gönderilecek sms lerin kuyruk bölümünde durumlarýnýn görüntülenmesi saðladý
+
+
+## 0.0.1 - 2015-12-01
+### Added
+-Opencart üye kayýt, sipariþ durumu güncelleme, sipariþ oluþturma trigger larý ile bu üç durumda üyelere sms gönderiminin saðlanmasý
+-3 durum için default sms templatelerinin oluþturulmasý
+-3 default sms template in içeriklerinin deðiþtirilmesinin saðlanmasý
+-3 Durum dýþýnda seçilen üyelere özel mesaj gönderiminin saðlanmasý
+-Gönderilecek sms lerin kuruk bölümüne eklenmesi
+-Eklentini yönetileceði ayarlar bölümünün eklenmesi
