@@ -247,6 +247,9 @@
                 </div>
                 <div class="tab-pane" id="sms_queue">
                     <div style="margin:20px;">
+                        <form method="post" action="<?php echo $action; ?>" onclick="return confirm('Silme işlemini onaylıyor musnuz?')">
+                            <button type="submit" class="btn btn-danger" name="sms_gueue_delete"><i class="fa fa-trash"></i> Tüm Kuyruğu Temizle</button>
+                        </form>
                         <table class="table table-hover">
                             <thead>
                             <tr>

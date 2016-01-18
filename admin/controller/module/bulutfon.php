@@ -128,6 +128,11 @@ class ControllerModuleBulutfon extends Controller{
             return $this->response->redirect($this->url->link('module/bulutfon', 'token=' . $this->session->data['token'], 'SSL'));
         }
 
+        if(isset($this->request->post['sms_gueue_delete'])){
+            $this->db->query("DELETE FROM ". DB_PREFIX."sms_queue");
+            return $this->response->redirect($this->url->link('module/bulutfon', 'token=' . $this->session->data['token'], 'SSL'));
+        }
+
         if(isset($this->request->post['setting_update'])){
             $postData = $this->request->post;
             $this->load->model('setting/setting');
