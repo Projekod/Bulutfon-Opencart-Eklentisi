@@ -35,8 +35,15 @@ Eklentinin Yüklenmesi ve Kullanımı
 * Bir sonraki adımda eklentiyi aktifleştirmek için admin panalinden Extensions/Modules yolunu izleyip “Bulutfon Opencart Eklentisini” yükleyiniz.
 * Mater Key oluşturmak için Bulutfon hesabımızdan Uygulamalar/Api Uygulamaları yolunu izliyoruz. Burada Tekil Api anahtarı oluşturuyoruz.
 * Sms Başlığı oluşturmak için tekrar Bulutfon hesabından Uygulamalar/Sms yolunu izliyoruz. Yeni Sms Başlığı oluştura tıklıyoruz. Sms başlığı oluşturmak için gerekli formu indirip doldurduktan sonra fotoğrafını “Dosya Seç” bölümden ekleyip kaydediyoruz.
+
 ![step](http://i.imgur.com/gRU0K21.png)
 * Oluşturduğumuz Master Key i ve Sms Başlığını ekletimizdeki ayarlar bölümünden girip kaydediyoruz. Bu adımdan sonra ekletinin özelliklerini kullanmaya başlayabilirsiniz.
+ 
+Eklentinin Videolu Kurulumu
+==
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/_rM7nzER4Ds/0.jpg)]
+(https://www.youtube.com/watch?v=_rM7nzER4Ds)
 
 Sistem Gereksinimleri
 ===
