@@ -1,27 +1,31 @@
+## 0.0.4 - 2016-08-18
+###Change
+-Bulutfon api tarafÄ±nda hata olduÄŸunda Ã§alÄ±ÅŸmayan exception yerine dÃ¼z print_r uygulandÄ±
+
 ## 0.0.4 - 2016-01-18
 ### Added
--Sms kuyruğundaki sms leri silme özelliğinin eklenmesi
--Default sms lerin gönderim kontrolleri değiştirildi
+-Sms kuyruÄŸundaki sms leri silme Ã¶zelliÄŸinin eklenmesi
+-Default sms lerin gÃ¶nderim kontrolleri deÄŸiÅŸtirildi
 ### Change
--Aynı sms in aynı anda kuyruğa birden fazla eklenmesinin önüne geçildi
+-AynÄ± sms in aynÄ± anda kuyruÄŸa birden fazla eklenmesinin Ã¶nÃ¼ne geÃ§ildi
 
 
 ## 0.0.3 - 2015-12-17
 ### Added
--Arama geçmişi bölümünün yenilenmesi
--Arama geçmişi bölümüne santral numarası filtreleme özelliğinin eklenmesi
+-Arama geÃ§miÅŸi bÃ¶lÃ¼mÃ¼nÃ¼n yenilenmesi
+-Arama geÃ§miÅŸi bÃ¶lÃ¼mÃ¼ne santral numarasÄ± filtreleme Ã¶zelliÄŸinin eklenmesi
 
 
 ## 0.0.2 - 2015-12-07
 ### Added
--Gönderilecek sms lerin kuyruk bölümünde durumlarının görüntülenmesi sağladı
+-GÃ¶nderilecek sms lerin kuyruk bÃ¶lÃ¼mÃ¼nde durumlarÄ±nÄ±n gÃ¶rÃ¼ntÃ¼lenmesi saÄŸladÄ±
 
 
 ## 0.0.1 - 2015-12-01
 ### Added
--Opencart üye kayıt, sipariş durumu güncelleme, sipariş oluşturma trigger ları ile bu üç durumda üyelere sms gönderiminin sağlanması
--3 durum için default sms templatelerinin oluşturulması
--3 default sms template in içeriklerinin değiştirilmesinin sağlanması
--3 Durum dışında seçilen üyelere özel mesaj gönderiminin sağlanması
--Gönderilecek sms lerin kuruk bölümüne eklenmesi
--Eklentini yönetileceği ayarlar bölümünün eklenmesi
+-Opencart Ã¼ye kayÄ±t, sipariÅŸ durumu gÃ¼ncelleme, sipariÅŸ oluÅŸturma trigger larÄ± ile bu Ã¼Ã§ durumda Ã¼yelere sms gÃ¶nderiminin saÄŸlanmasÄ±
+-3 durum iÃ§in default sms templatelerinin oluÅŸturulmasÄ±
+-3 default sms template in iÃ§eriklerinin deÄŸiÅŸtirilmesinin saÄŸlanmasÄ±
+-3 Durum dÄ±ÅŸÄ±nda seÃ§ilen Ã¼yelere Ã¶zel mesaj gÃ¶nderiminin saÄŸlanmasÄ±
+-GÃ¶nderilecek sms lerin kuruk bÃ¶lÃ¼mÃ¼ne eklenmesi
+-Eklentini yÃ¶netileceÄŸi ayarlar bÃ¶lÃ¼mÃ¼nÃ¼n eklenmesi
