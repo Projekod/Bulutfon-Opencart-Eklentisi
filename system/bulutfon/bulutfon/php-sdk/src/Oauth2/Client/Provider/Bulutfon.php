@@ -183,7 +183,9 @@ class Bulutfon extends AbstractProvider
                 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 header("Location: ". $this->redirectUri ."?refresh_token=true&back=".$actual_link);
             }
-            throw new IDPException(end($raw_response));
+            echo "<pre>";
+            print_r($raw_response);
+            die();
             // @codeCoverageIgnoreEnd
         }
 
