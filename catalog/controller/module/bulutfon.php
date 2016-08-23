@@ -142,7 +142,9 @@ class ControllerModuleBulutfon extends Controller
 
     public function addQueue($phoneNumber, $templateId, $arguments)
     {
-
+        if(!$phoneNumber){
+            return false;
+        }
         $rows = $this->db->query("SELECT * FROM " . DB_PREFIX . "sms_queue WHERE date_added='" . date('Y-m-d H:i:s') . "' and template_id='" . $templateId . "' and phone_number='" . $phoneNumber . "'")->rows;
         if (!$rows) {
             $this->db->query("INSERT INTO " . DB_PREFIX . "sms_queue (date_added, status, arguments, template_id, phone_number) VALUES ( '" . date('Y-m-d H:i:s') . "', '1','" . $arguments . "','" . $templateId . "','" . $phoneNumber . "')");
