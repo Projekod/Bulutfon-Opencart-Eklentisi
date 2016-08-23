@@ -1,4 +1,8 @@
-## 0.0.4 - 2016-08-18
+## 0.0.5 - 2016-8-23
+###Change
+-Kuyruk sırasında numarası olmayan müşterilerin oluşturduğu hatanın önüne geçildi.
+
+## 0.0.5 - 2016-08-18
 ###Change
 -Bulutfon api tarafında hata olduğunda çalışmayan exception yerine düz print_r uygulandı
 
