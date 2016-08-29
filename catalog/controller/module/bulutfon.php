@@ -55,6 +55,9 @@ class ControllerModuleBulutfon extends Controller
             $arguments = json_decode($sms["arguments"], true);
             $content = $sms["content"];
             foreach ($arguments as $arKey => $arValue) {
+                if ($arKey == "siparis_numarasi") {
+                    $content = str_replace("{siparisNumarasi}", $arValue, $content); //Fix 0.0.8
+                }
                 $content = str_replace("{$arKey}", $arValue, $content);
             }
             if (isset($sms["phone_number"]) && $sms["phone_number"]) {
@@ -142,7 +145,7 @@ class ControllerModuleBulutfon extends Controller
 
     public function addQueue($phoneNumber, $templateId, $arguments)
     {
-        if(!$phoneNumber){
+        if (!$phoneNumber) {
             return false;
         }
         $rows = $this->db->query("SELECT * FROM " . DB_PREFIX . "sms_queue WHERE date_added='" . date('Y-m-d H:i:s') . "' and template_id='" . $templateId . "' and phone_number='" . $phoneNumber . "'")->rows;

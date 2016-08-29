@@ -1,3 +1,7 @@
+## 0.0.8 - 2016-8-29
+###Change
+-0.0.7 düzeltilen özellik için geçmiş desteği eklendi.
+
 ## 0.0.7 - 2016-8-29
 ###Change
 -Sms temaları içerisinde bulunan hatalı siparisnumarası değişkeni düzenlendi.
