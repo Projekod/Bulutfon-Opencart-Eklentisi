@@ -1,4 +1,8 @@
-## 0.0.5 - 2016-8-23
+## 0.0.7 - 2016-8-29
+###Change
+-Sms temaları içerisinde bulunan hatalı siparisnumarası değişkeni düzenlendi.
+
+## 0.0.6 - 2016-8-23
 ###Change
 -Kuyruk sırasında numarası olmayan müşterilerin oluşturduğu hatanın önüne geçildi.
 
