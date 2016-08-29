@@ -28,8 +28,8 @@ class ControllerModuleBulutfon extends Controller{
         $sql = $this->db->query("SELECT * FROM ". DB_PREFIX."sms_template WHERE name='Sipariş Durumu Güncelledi' OR name='Sipariş Oluşturuldu' OR name='Yeni Üye Kayıt Oldu'");
 
         if($sql->num_rows == 0){
-            $this->addTemplate('Sipariş Oluşturuldu', '{ad}{soyad}{fiyat}{siparis_numarasi}', 0);
-            $this->addTemplate('Sipariş Durumu Güncelledi', '{siparis_durumu}{siparis_numarasi}', 0);
+            $this->addTemplate('Sipariş Oluşturuldu', '{ad}{soyad}{fiyat}{siparisNumarasi}', 0);
+            $this->addTemplate('Sipariş Durumu Güncelledi', '{siparis_durumu}{siparisNumarasi}', 0);
             $this->addTemplate('Yeni Üye Kayıt Oldu', '{ad}{soyad}', 0);
         }
 
